@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacks Wallet Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
+    <script src="https://unpkg.com/@stacks/connect"></script>
+</head>
+<body>
+
+<button id="loginBtn">Login with Stacks Wallet</button>
+
+<script>
+    // UserSession Configuration
+    const appConfig = new stacksConnect.AppConfig(['store_write', 'publish_data']);
+    const userSession = new stacksConnect.UserSession({ appConfig });
+
+    // Login Functionality
+    document.getElementById('loginBtn').addEventListener('click', () => {
+        const myAppName = 'My Stacks Web-App';
+        const myAppIcon = window.location.origin + '/my_logo.png';
+
+        stacksConnect.showConnect({
+            userSession,
+            appDetails: {
+                name: myAppName,
+                icon: myAppIcon,
+            },
+            onFinish: () => {
+                window.location.reload();
+            },
+            onCancel: () => {
+                console.log('User cancelled login');
+            },
+        });
+    });
+</script>
+
+</body>
+</html>
