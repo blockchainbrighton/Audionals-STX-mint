@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio to IPFS</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client@latest/dist/index.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <input type="file" id="audioFiles" accept="audio/*" multiple onchange="loadFiles()" max="8">
+        <span id="audioFilesText" style="color: white;">Mint up to 8 audional samples as Stacks NFTs</span>
+        <div id="formsContainer"></div>
+        <div id="totalsContainer">
+            <div id="btcTotal">Total Bitcoin Inscription Cost: 0 BTC ($0)</div>
+            <div id="stxTotal">Total STX Minting Cost: 0 STX ($0)</div>
+        </div>
+        <button onclick="uploadAllToIPFS()">Mint Audional NFTs</button>
+        <div id="ipfsLinks"></div>
+        <button onclick="copyLinksToClipboard()">Copy Links to Clipboard</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
